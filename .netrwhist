@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/benp/.vim'
+let g:netrw_dirhist_2='/Users/benp/projects/djed/djed/api/auth'
+let g:netrw_dirhist_3='/Users/benp/projects/djed/.git/hooks'
+let g:netrw_dirhist_4='/Users/benp/.oh-my-zsh'
+let g:netrw_dirhist_5='/Users/benp/projects/djed/djed/api'
+let g:netrw_dirhist_6='/Users/benp/.virtualenvs/djed/lib/python2.7/site-packages'
+let g:netrw_dirhist_7='/Users/benp/projects/djed/djed'
+let g:netrw_dirhist_8='/Users/benp/projects/hound/config'
+let g:netrw_dirhist_9='/Users/benp/.vim'
