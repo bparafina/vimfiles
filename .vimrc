@@ -1,15 +1,17 @@
-set rtp=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'elzr/vim-json'
+Plugin 'chrisbra/vim-diff-enhanced'
+Plugin 'katono/rogue.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'jlanzarotta/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'majutsushi/tagbar'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Raimondi/deliMITMate'
@@ -20,33 +22,32 @@ Plugin 'tpope/vim-git'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'bling/vim-airline'
 Plugin 'xenoterracide/html.vim'
 Plugin 'klen/python-mode'
 Bundle 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'saltstack/salt-vim'
 Bundle 'jistr/vim-nerdtree-tabs'
-Plugin 'lokaltog/vim-powerline'
 Plugin 'tomasr/molokai'
-Plugin 'hdima/python-syntax'
 Bundle 'wakatime/vim-wakatime'
 Plugin 'shuber/vim-promiscuous'
-Plugin 'terryma/vim-multiple-cursors'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'lepture/vim-jinja'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 colorscheme molokai
+
 filetype plugin on
 filetype plugin indent on
-set statusline+=%#warningmsg#
 syntax on
-set background=dark
+set statusline+=%#warningmsg#
+set background=light
 set nocp
-
+set tags=tags
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
 let g:netrw_altv = 1
 let g:netrw_fastbrowse = 2
@@ -76,7 +77,7 @@ set expandtab
 set modeline
 set ls=2
 
-map <leader>g :GundoToggle<CR>
+map <C-g> :GundoToggle<CR>
 
 set nocompatible
 
@@ -84,13 +85,14 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-nmap <leader>a <Esc>:Ack!
+map <C-j> :RopeGotoDefinition<CR>
+map <C-r> :RopeRename<CR>
+nmap <C-a> <Esc>:Ack!
 map <leader>dt :set makeprg=python\ manage.py\ test\|:call MakeGreen()<CR>
 
 set laststatus=2
 
+:
 let g:Powerline_symbols = 'fancy'
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -113,21 +115,10 @@ let g:NERDTreeIndicatorMapCustom = {
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-let python_highlight_all=1
-
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-
 set noswapfile
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
-colorscheme badwolf
-let g:badwolf_darkgutter = 1
-let g:badwolf_html_link_underline = 0
-let g:badwolf_css_props_highlight = 1
 
-filetype on
 let g:promiscuous_dr = $HOME . '/.vim/Promiscuous'
 let g:promiscuous_prefix = '[Promiscuous]'
 let g:promiscuous_verbose = 0
@@ -179,6 +170,4 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup END
 
-let g:multi_cursor_use_default_mapping=0
-let g:airline_powerline_fonts=1
-
+let g:airline#extensions#tabline#enabled = 1
